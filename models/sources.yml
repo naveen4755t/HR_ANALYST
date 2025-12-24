@@ -2,10 +2,88 @@ version: 2
 
 sources:
   - name: raw
+    description: "Raw HR data ingested into Snowflake from CSV files for analytics processing"
     database: HR_ANALYTICS
     schema: RAW
+
     tables:
       - name: employees_raw
+        description: "Raw employee containing job-related information"
+        columns:
+          - name: employee_id
+            description: "ID for each employee"
+            tests:
+              - not_null
+              - unique
+
+          - name: full_name
+            description: "Full name of the employee"
+
+          - name: department
+            description: "Department where the employee works"
+            tests:
+              - not_null
+
+          - name: role
+            description: "Job role of the employee"
+
+          - name: location
+            description: "Office location of the employee"
+
+          - name: hire_date
+            description: "Date when the employee was hired"
+
+          - name: salary
+            description: "Current salary of the employee"
+
       - name: performance_reviews_raw
+        description: "Raw employee performance review records"
+        columns:
+          - name: employee_id
+            description: "ID associated with the performance review"
+            tests:
+              - not_null
+
+          - name: review_date
+            description: "Date of the performance review"
+            tests:
+              - not_null
+
+          - name: performance_score
+            description: "Performance score given during the review"
+
+          - name: manager_rating
+            description: "Rating provided by the employee's manager"
+
       - name: attendance_raw
+        description: "Raw daily attendance records for employees"
+        columns:
+          - name: employee_id
+            description: "ID for attendance tracking"
+            tests:
+              - not_null
+
+          - name: date
+            description: "Date of the attendance record"
+            tests:
+              - not_null
+
+          - name: hours_worked
+            description: "Number of hours worked by the employee"
+
+          - name: leave_type
+            description: "Type of leave taken by the employee"
+
       - name: attrition_raw
+        description: "Raw employee attrition and exit information"
+        columns:
+          - name: employee_id
+            description: "ID for attrition records"
+            tests:
+              - not_null
+
+          - name: exit_date
+            description: "Date when the employee exited the organization"
+
+          - name: exit_reason
+            description: "Reason for employee exit"

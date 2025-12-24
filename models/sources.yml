@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    database: HR_ANALYTICS
+    schema: RAW
+    tables:
+      - name: employees_raw
+      - name: performance_reviews_raw
+      - name: attendance_raw
+      - name: attrition_raw
